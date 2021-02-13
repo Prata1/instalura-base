@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Menu from '../src/components/commons/Menu'
 
 const Title = styled.h1`
   font-size: 50px;
@@ -6,5 +7,10 @@ const Title = styled.h1`
 `
 
 export default function Home() {
-  return <Title>My page</Title>
+  return ( 
+    <div>
+      <Menu/>
+      My page
+    </div>
+  )
 }
