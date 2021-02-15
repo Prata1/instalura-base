@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components'
 import get from 'lodash/get';
+import { TextStyleVariants } from '../../foundation/Text/styles';
 
 const ButtonGhost = css`
     background:transparent;
     color:${( { theme, variant } ) =>  get(theme, `colors.${variant}.color`) };
+    ${TextStyleVariants.smallestException}
 `;
 
 const ButtonDefault = css`
