@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 import get from 'lodash/get';
 import { TextStyleVariants } from '../../foundation/Text/styles';
+import { breakpointsMedia } from "../../theme/utils/breakpointsMedia";
 
 const ButtonGhost = css`
     background:transparent;
@@ -26,6 +27,20 @@ export const Button = styled.button`
         (props) =>{
             return props.ghost ? ButtonGhost : ButtonDefault
         }
+    }
+
+    ${
+        breakpointsMedia({
+            xs: css `
+                ${TextStyleVariants.smallestException}
+            `,
+            md: css `
+                ${TextStyleVariants.paragraph1}
+            `,
+            ds: css `
+                ${TextStyleVariants.paragraph1}
+            `
+        })
     }
 
     &:hover,
