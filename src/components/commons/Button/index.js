@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 import get from 'lodash/get';
 import { TextStyleVariants } from '../../foundation/Text/styles';
 import { breakpointsMedia } from "../../theme/utils/breakpointsMedia";
+import { propToStyle } from "../../theme/utils/propToStyle";
 
 const ButtonGhost = css`
     background:transparent;
@@ -23,6 +24,9 @@ export const Button = styled.button`
     border-radius:${( { theme } ) =>  theme.borderRadius };
     transition:${( { theme } ) =>  theme.transition };
 
+    ${propToStyle('margin')}
+    ${propToStyle('display')}
+    
     ${
         (props) =>{
             return props.ghost ? ButtonGhost : ButtonDefault

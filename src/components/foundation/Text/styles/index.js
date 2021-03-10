@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 import get from 'lodash/get';
+import { propToStyle } from "../../../theme/utils/propToStyle";
+import { breakpointsMedia } from "../../../theme/utils/breakpointsMedia";
 
 export const TextStyleVariants = {
     title:css`
@@ -8,15 +10,17 @@ export const TextStyleVariants = {
             font-weight: ${theme.typographyVariants.title.fontWeight};
             line-height: ${theme.typographyVariants.title.lineHeight};
         `}
+        ${breakpointsMedia({
+            md: css`
+                ${({ theme }) => css`
+                    font-size: ${theme.typographyVariants.title.fontSize};
+                    font-weight: ${theme.typographyVariants.title.fontWeight};
+                    line-height: ${theme.typographyVariants.title.lineHeight};
+                `}
+            `,
+        })}
     `,
 
-    titleXS:css`
-        ${({ theme }) => css`
-            font-size: ${theme.typographyVariants.titleXS.fontSize};
-            font-weight: ${theme.typographyVariants.titleXS.fontWeight};
-            line-height: ${theme.typographyVariants.titleXS.lineHeight};
-        `}
-    `,
 
     subTitle:css`
         ${({ theme }) => css`
@@ -51,7 +55,11 @@ export const TextStyleVariants = {
     `
 }
 
+
 export const TextBase = styled.span`
   ${({ variant }) => TextStyleVariants[variant]}
+  ${propToStyle('textAlign')}
+  ${propToStyle('marginBottom')}
+  ${propToStyle('margin')}
   color: ${({ theme, color }) => get(theme, `colors.${color}.color`)};
 `
